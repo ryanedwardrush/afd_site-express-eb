@@ -1,1 +1,1 @@
-# afd_site-mean-eb
+# afd_mean
