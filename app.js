@@ -9,8 +9,8 @@ var nodemailer = require("nodemailer");
 // var index = require('./routes/index');
 // var send = require('./routes/send');  // NOTE - I'M NOT USING THIS ROUTE. COULDN'T GET IT WORKING.
 
-//Declare environment variable
-const env = require('env2')('config.env');
+//Declare environment variable - Used only for testing using localhost
+const env = require('env2')('process.env');
 // console.log(process.env.NODEMAILER_USER);
 // console.log(process.env.NODEMAILER_PASS);
 
