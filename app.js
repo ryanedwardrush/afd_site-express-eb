@@ -23,7 +23,10 @@ var app = express();
 // app.set('view engine', 'ejs');
 
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));  // Use this to add a browser icon for the app
-app.use(express.static(path.join(__dirname, '/public')));  // Set static path, serves up the static index.html in the public folder
+
+/* COMMENTING THIS OUT BECAUSE STATIC FILES WILL BE SERVED FROM NGINX IN EB*/
+// app.use(express.static(path.join(__dirname, '/public')));  // Set static path, serves up the static index.html in the public folder
+
 app.use("/public", express.static(__dirname + '/public'));  // Set static path, serves up the CSS, JS, etc.
 
 // app.use('/', index); // NOTE - I'm not using this route because I'm serving a static HTML file from the public directory
