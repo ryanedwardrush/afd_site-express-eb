@@ -26,12 +26,6 @@ $(document).ready(function(){
 });
 
 
-/*Function to show more*/
-$(document).ready(function(){
-	$("#flip").click(function(){
-		$("#panel").slideToggle("slow");
-	});
-});
 
 /*Function to smoothly scroll for anchor links*/
 $(document).ready(function(){

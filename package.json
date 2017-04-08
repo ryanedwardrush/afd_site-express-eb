@@ -12,7 +12,7 @@
     "ejs": "~2.3.3",
     "env2": "^2.1.1",
     "express": "~4.13.1",
-    "morgan": "~1.6.1",
+    "morgan": "^1.6.1",
     "nodemailer": "latest",
     "serve-favicon": "~2.3.0"
   }

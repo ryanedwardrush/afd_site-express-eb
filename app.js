@@ -1,19 +1,55 @@
-
-
 // Declare dependencies
 var express = require('express');
-var nodemailer = require("nodemailer");
 var http = require('http');
+var path = require('path');
+var nodemailer = require("nodemailer");
 
+
+//Declare routes - Not using
+// var index = require('./routes/index');
+// var send = require('./routes/send');  // NOTE - I'M NOT USING THIS ROUTE. COULDN'T GET IT WORKING.
+
+//Declare environment variable
 const env = require('env2')('config.env');
+// console.log(process.env.NODEMAILER_USER);
+// console.log(process.env.NODEMAILER_PASS);
 
-/*
-console.log(process.env.USER);
-console.log(process.env.NODEMAILER_PASS);
-*/
 
-// Defining SMTP mail server details to use my gmail to send the email
+// Declare application to be an express application
+var app = express();
 
+/* ****** View engine setup - Commenting out since I'm not using a view engine *****/
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
+
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));  // Use this to add a browser icon for the app
+app.use(express.static(path.join(__dirname, '/public')));  // Set static path, serves up the static index.html in the public folder
+app.use("/public", express.static(__dirname + '/public'));  // Set static path, serves up the CSS, JS, etc.
+
+// app.use('/', index); // NOTE - I'm not using this route because I'm serving a static HTML file from the public directory
+// app.use('/send', send);  // NOTE - I'M NOT USING THIS ROUTE. COULDN'T GET IT WORKING.
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+
+// Defining SMTP mail server details to use Network Solutions mail to send the email
 var smtpTransport = nodemailer.createTransport({
     host: "smtp.advancedfloor.net",
     port: "587",
@@ -27,75 +63,38 @@ var smtpTransport = nodemailer.createTransport({
     }
 });
 
-
-// Version 2 from http://stackoverflow.com/questions/24973965/sending-emails-using-nodemailer
-/*
-var smtpTransport = nodemailer.createTransport(smtpTransport({
-  service: 'Gmail',
-  auth: { user: 'abc@gmail.com',
-        pass: 'pass' }
-  }));
-  */
-
-
-// Declare application to be an express application
-var app = express();
-
-// Ensure index.html is served when users hit the domain
-app.get('/',function(req, res){ //get,put,post,delete   
-      res.sendFile(__dirname + '/views/index.html');
-    });
-
 // Handles route request for /send, which is triggered by the email form
-app.get('/send',function(req,res){
-	var mailOptions={
-		from: req.query.email + req.query.name,
-		to: req.query.to,
-		subject: "Inquiry from website",
-		html: "<strong>Name:</strong> " + req.query.name + "<br />" + "<strong>Email:</strong> " + req.query.email + "<br />" + "<strong>Phone:</strong> " + req.query.phone + "<br /> <p>" + "<strong>Message:</strong> " + "<br />" + req.query.message + "</p>"
-	}
+app.get('/send', function(req, res){
 
-	console.log(mailOptions);
+  var mailOptions={
+    from: req.query.email + req.query.name,
+    to: req.query.to,
+    subject: "Inquiry from website",
+    html: "<strong>Name:</strong> " + req.query.name + "<br />" + "<strong>Email:</strong> " + req.query.email + "<br />" + "<strong>Phone:</strong> " + req.query.phone + "<br /> <p>" + "<strong>Message:</strong> " + "<br />" + req.query.message + "</p>"
+  }
 
-	smtpTransport.sendMail(mailOptions, function(error, response){
-		if(error){
-			console.log(error);
-			res.end("error");
-		}else{
-			console.log("Message sent: " + response.message);
-			res.end("sent");
-		}
-	});
+  console.log(mailOptions);
+
+  smtpTransport.sendMail(mailOptions, function(error, response){
+    if(error){
+      console.log(error);
+      res.end("error");
+    }else{
+      console.log("Message sent: " + response.message);
+      res.end("sent");
+    }
+  });
 
 });
 
 
-// Have server listen at a certain port
-app.listen(3000,function(){
+// Have server listen at a certain port ** NOT NECESSARY IN EXPRESS. IT"S HANDLED IN THE WWW FILE IN BIN **
+/* app.listen(3000,function(){
     console.log("Express Started on Port 3000");
-});
+}); */
 
 
-
-//WHAT DOES THIS DO?
-var routes = require('./routes/index');
-
-
-
-
-/*------------------Serve Static Files Started-----------------------------*/
-
-app.use("/public", express.static(__dirname + '/public'));
-
-// view engine setup if using ejs or Jade
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
-
-
-/*------------------Serve Static Files Over-----------------------------*/
-
-
-
+module.exports = app;
 
 
 
