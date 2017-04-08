@@ -33,6 +33,8 @@ app.use("/public", express.static(__dirname + '/public'));  // Set static path, 
 // app.use('/send', send);  // NOTE - I'M NOT USING THIS ROUTE. COULDN'T GET IT WORKING.
 
 
+
+/* COMMENTING THIS OUT BECAUSE THIS ERROR HANDLING DOESN't WORK
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -50,6 +52,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+*/
+
 
 
 // Defining SMTP mail server details to use Network Solutions mail to send the email
