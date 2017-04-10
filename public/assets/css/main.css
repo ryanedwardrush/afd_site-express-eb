@@ -2109,6 +2109,18 @@
 				width: 100%;
 			}
 
+/* Logo Image */
+
+.logos-container{
+	text-align:left
+}
+
+.logos {
+	display:inline-block; 
+	padding-right:1em; 
+	width:12%;
+}
+
 /* List */
 
 	ol {
@@ -3033,6 +3045,15 @@
 
 	@media screen and (max-width: 1280px) {
 
+
+		/* Logo Image */
+
+		.logos {
+			display:inline-block; 
+			padding-right:1em; 
+			width:15%;
+		}
+
 		/* Navigation */
 
 		#navigation {
@@ -3086,6 +3107,15 @@
 /* Medium - Header at top*/
 
 	@media screen and (max-width: 980px) {
+
+
+		/* Logo Image */
+
+		.logos {
+			display:inline-block; 
+			padding-right:1em; 
+			width:15%
+		}
 
 		/* Navigation */
 
@@ -3194,6 +3224,14 @@
 	@media screen and (max-width: 736px) {
 
 	
+		/* Logo Image */
+
+		.logos {
+			display:inline-block; 
+			padding-right:1em; 
+			width:18%
+		}
+
 		/*Email sent notification*/
 		#message_sent{
 			display: block;
@@ -3391,6 +3429,21 @@
 /* XSmall */
 
 	@media screen and (max-width: 480px) {
+
+
+
+		/* Logo Image */
+
+		.logos-container{
+			padding-bottom:2em; 
+			text-align: center;
+		}
+
+		.logos {
+			display:inline-block; 
+			padding-right:1em; 
+			width:20%
+		}
 
 		/* Header */
 
