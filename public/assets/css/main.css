@@ -3437,12 +3437,13 @@
 		.logos-container{
 			padding-bottom:2em; 
 			text-align: center;
+
 		}
 
 		.logos {
 			display:inline-block; 
 			padding-right:1em; 
-			width:20%
+			width:24%;
 		}
 
 		/* Header */
