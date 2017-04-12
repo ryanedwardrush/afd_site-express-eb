@@ -77,7 +77,7 @@ app.get('/send', function(req, res){
   var mailOptions={
     from: req.query.email + req.query.name,
     to: req.query.to,
-    subject: "Inquiry from website",
+    subject: "Inquiry from new website",
     html: "<strong>Name:</strong> " + req.query.name + "<br />" + "<strong>Email:</strong> " + req.query.email + "<br />" + "<strong>Phone:</strong> " + req.query.phone + "<br /> <p>" + "<strong>Message:</strong> " + "<br />" + req.query.message + "</p>"
   }
 
