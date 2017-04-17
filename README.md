@@ -9,7 +9,7 @@ There is one dynamic component to the site - the Contact Us form. I could have e
 [FILL IN MORE DETAILS HERE]
 
 Stuff I learned:
-- AWS EB CLI
+- AWS EB CLI & the necessary commands to initialize a repository, create an EB environment, and deploy an app to EB
 - NodeMailer
 - Using environment variables (both locally in a process.env file and server-side in configuration) to store sensitive information securely.
 - How to deploy an Express app to Elastic Beanstalk (it's not as straight forward as I thought it would be)
