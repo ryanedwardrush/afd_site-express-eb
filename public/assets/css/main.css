@@ -2145,6 +2145,7 @@
                 
                 #main ul.labeled-icons li {
 			padding-left: 2em;
+			list-style: none;
 		}
 
 		ul.alt {
