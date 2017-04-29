@@ -2,17 +2,16 @@
 
 I challenged myself to learn several new technologies so I could craft together a new responsive website for Advanced Floor Design (AFD). Years of Google Analytics data told me that more and more users were accessing advancedfloor.net using mobile devices, so I needed to ensure they had a positive experience.
 
-First thing first, I found a fantastic free responsive template from HTML5 UP which had a great look and feel, slick JQuery functionality, and all necessary CSS & media query framework built in. I started with this template and then made several modifications/additions so it would work for AFD.
+First thing first, I found a fantastic free responsive template from HTML5 UP which had a great styling, slick JQuery functionality, and all necessary CSS & media query framework built in. I started with this template and then made several modifications and additions so it would work for AFD.
 
-There is one dynamic component to the site - the Contact Us form. I could have easily re-implemented PHPMailer used on the previous version of the site, but I wanted to learn something new. I first tackled this functionality by build a Java EE web application that used the JavaMail API to send the emails (see project afd_site-jsp), but this proved to heavy weight so I re-architected and moved to a Node/Express framework.
+There is one dynamic component to the site - the Contact Us form. I could have easily re-implemented PHPMailer used on the previous version of the site, but I wanted to learn something new. I first tackled this functionality by build a Java EE web application that used the JavaMail API to send the emails (see project afd_site-jsp), but this proved to heavy weight so I re-architected and moved to a Node/Express framework and implemented NodeMailer.
 
-[FILL IN MORE DETAILS HERE]
 
 Stuff I learned:
 - AWS EB CLI & the necessary commands to initialize a repository, create an EB environment, and deploy an app to EB
 - NodeMailer
-- Using environment variables (both locally in a process.env file and server-side in configuration) to store sensitive information securely.
-- How to deploy an Express app to Elastic Beanstalk (it's not as straight forward as I thought it would be)
+- Using environment variables both locally in a process.env file (using env2 module to access them) and server-side (in EB configuration) to store sensitive information securely.
+- How to deploy GitHub code to Elastic Beanstalk
 
 
 AWS: http://node-express-env.grfksc5d6y.us-west-2.elasticbeanstalk.com/
