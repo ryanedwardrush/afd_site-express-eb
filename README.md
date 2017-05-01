@@ -21,12 +21,13 @@ AWS: http://node-express-env.grfksc5d6y.us-west-2.elasticbeanstalk.com/
 
 ******* Giving Credit Where Credit is Due *******
 
-Responsive Site Template: https://html5up.net/strata
-Navigation: https://www.w3schools.com/howto/howto_js_topnav.asp
-Sticky Navigation from Guil H: https://codepen.io/Guilh/pen/JLKbn
-Image Gallery: http://www.menucool.com/responsive-slider
-JQuery Validation: https://jqueryvalidation.org/
-JQuery Toggle Slide: https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_slide_toggle
-NodeMailer: https://github.com/nodemailer/nodemailer
-Deploying Express app to AWS EB: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express.html
-env2 module for local environment variables: https://github.com/dwyl/learn-environment-variables
+- Responsive Site Template: https://html5up.net/strata
+- Navigation: https://www.w3schools.com/howto/howto_js_topnav.asp
+- Sticky Navigation from Guil H: https://codepen.io/Guilh/pen/JLKbn
+- Image Gallery: http://www.menucool.com/responsive-slider
+- JQuery Validation: https://jqueryvalidation.org/
+- JQuery Toggle Slide: https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_slide_toggle
+- NodeMailer: https://github.com/nodemailer/nodemailer
+- Deploying Express app to AWS EB: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express.html
+- env2 module for local environment variables: https://github.com/dwyl/learn-environment-variables
+- Setup Node/Express App on EC2, and configure iptables so port 80 points to port 9000: https://www.youtube.com/watch?v=WxhFq64FQzA
