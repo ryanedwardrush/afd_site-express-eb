@@ -376,7 +376,7 @@
 								
                                 <ul class="actions">
 									<li style="padding-top:1em; margin-left:-0.5em">
-										<input type="submit" value="Send Message" id="send_email" />
+										<input type="submit" value="Send Message" id="send_email" onclick="ga('send', 'event', { eventCategory: 'Top', eventAction: 'SendMessageButton' })" />
 										<!-- <input onclick="clearForm();" type="submit" value="Send Message" id="send_email" /> includes clearform function -->
 									</li>
 								</ul>
