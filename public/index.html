@@ -20,8 +20,38 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
 		<!--<script>alert(document.domain);</script> Used to find out what domain the page is loading on-->
+
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-MLN6ZTQ');</script>
+		<!-- End Google Tag Manager -->
+
+		<!-- Google Analytics -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-99061781-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+
+		<!-- End Google Analytics -->
+
+
+
 	</head>
 	<body id="top">
+
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLN6ZTQ"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
 
 		<!-- Header -->
 			<header id="header">
@@ -49,13 +79,13 @@
 				<a name="top"></a>
 					<ul class="topnav" id="myTopnav">
 					  <!--<li><a class="active" href="#top" onclick="navFunction()"></a></li>-->
-					  <li class="nav-logo"><a href="#top" id="nav-logo-link"></a></li>
-					  <li><a href="#top" onclick="navFunction()" id="nav_home">Home</a></li>
-					  <li><a href="#gallery" onclick="navFunction()">Gallery</a></li>
-					  <li><a href="#about" onclick="navFunction()">About</a></li>
-					  <li><a href="#featuredwork" onclick="navFunction()">Featured Work</a></li>
-					  <li><a href="#services" onclick="navFunction()">Services</a></li>
-					  <li><a href="#contact" onclick="navFunction()">Contact</a></li>
+					  <li class="nav-logo"><a href="#top" id="nav-logo-link" onclick="ga('send', 'event', { eventCategory: 'Top', eventAction: 'Click' })"></a></li>
+					  <li><a href="#top" onclick="navFunction() ga('send', 'event', { eventCategory: 'Top', eventAction: 'Click' })" id="nav_home">Home</a></li>
+					  <li><a href="#gallery" onclick="navFunction() ga('send', 'event', { eventCategory: 'Gallery', eventAction: 'Click' })">Gallery</a></li>
+					  <li><a href="#about" onclick="navFunction() ga('send', 'event', { eventCategory: 'About', eventAction: 'Click' })">About</a></li>
+					  <li><a href="#featuredwork" onclick="navFunction() ga('send', 'event', { eventCategory: 'Featured', eventAction: 'Click' })">Featured Work</a></li>
+					  <li><a href="#services" onclick="navFunction() ga('send', 'event', { eventCategory: 'Services', eventAction: 'Click' })">Services</a></li>
+					  <li><a href="#contact" onclick="navFunction() ga('send', 'event', { eventCategory: 'Contact', eventAction: 'Click' })">Contact</a></li>
                       <li class="icon"><a href="javascript:void(0);" style="font-size:15px;" onclick="navFunction()">☰</a></li>
 					</ul>
 			
@@ -720,6 +750,18 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="../public/assets/js/ninja-slider.js"></script>
 			<script src="../public/assets/js/contact-route.js"></script>
 			
-
+			<script>
+			// USed to track scrolling - from http://jeroensormani.com/google-analytics-one-page-tracking/
+			jQuery( document ).ready(function($) {
+			    var runned = false; 
+				$( window ).scroll( function() { 
+				  if ( $( document ).scrollTop() >= 250 && runned == false ) { 
+				    ga('send', 'event', { eventCategory: 'Scrolled 250px', eventAction: 'Scroll' }); 
+				  runned = true; 
+				  } 
+				});
+			});
+			</script>
+			
 	</body>
 </html>
