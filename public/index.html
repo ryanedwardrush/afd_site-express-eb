@@ -79,14 +79,14 @@
 				<a name="top"></a>
 					<ul class="topnav" id="myTopnav">
 					  <!--<li><a class="active" href="#top" onclick="navFunction()"></a></li>-->
-					  <li class="nav-logo"><a href="#top" id="nav-logo-link" onclick="ga('send', 'event', { eventCategory: 'Top', eventAction: 'Click' })"></a></li>
-					  <li><a href="#top" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Top', eventAction: 'Click' })" id="nav_home">Home</a></li>
-					  <li><a href="#gallery" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Gallery', eventAction: 'Click' })">Gallery</a></li>
-					  <li><a href="#about" onclick="navFunction(); ga('send', 'event', { eventCategory: 'About', eventAction: 'Click' })">About</a></li>
-					  <li><a href="#featuredwork" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Featured', eventAction: 'Click' })">Featured Work</a></li>
-					  <li><a href="#services" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Services', eventAction: 'Click' })">Services</a></li>
-					  <li><a href="#contact" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Contact', eventAction: 'Click' })">Contact</a></li>
-                      <li class="icon"><a href="javascript:void(0);" style="font-size:15px;" onclick="navFunction()">☰</a></li>
+					  <li class="nav-logo"><a href="#top" id="nav-logo-link" onclick="ga('send', 'event', { eventCategory: 'Navigation', eventAction: 'Click-Nav-Top' })"></a></li>
+					  <li><a href="#top" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Navigation', eventAction: 'Click-Nav-Home' })" id="nav_home">Home</a></li>
+					  <li><a href="#gallery" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Navigation', eventAction: 'Click-Nav-Gallery' })">Gallery</a></li>
+					  <li><a href="#about" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Navigation', eventAction: 'Click-Nav-About' })">About</a></li>
+					  <li><a href="#featuredwork" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Navigation', eventAction: 'Click-Nav-Featured' })">Featured Work</a></li>
+					  <li><a href="#services" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Navigation', eventAction: 'Click-Nav-Services' })">Services</a></li>
+					  <li><a href="#contact" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Navigation', eventAction: 'Click-Nav-Contact' })">Contact</a></li>
+                      <li class="icon"><a href="javascript:void(0);" style="font-size:15px;" onclick="navFunction(); ga('send', 'event', { eventCategory: 'Navigation', eventAction: 'Click-Nav-Hamburger' })">☰</a></li>
 					</ul>
 			
 			</nav>
@@ -110,7 +110,7 @@
 
 
 						<ul class="actions">
-							<li><a href="#contact" class="button">Get a Free Estimate</a></li>
+							<li><a href="#contact" class="button" onclick="ga('send', 'event', { eventCategory: 'CTA-button', eventAction: 'Click-Button-GetFreeEstimate' })">Get a Free Estimate</a></li>
 						</ul>
 					</section>
 
@@ -224,7 +224,7 @@
 						</div>
 						<ul class="actions">
 							<!--TASK: Figure out how to change the title after it's clicked -->
-							<li><a class="button" id="flip" onclick="ga('send', 'event', { eventCategory: 'ShowMoreFeatures', eventAction: 'Click' })">Show More</a></li>
+							<li><a class="button" id="flip" onclick="ga('send', 'event', { eventCategory: 'CTA-button', eventAction: 'Click-Button-ShowMoreFeatures' })">Show More</a></li>
 							
 						</ul>
 					</section>
@@ -297,8 +297,11 @@
 
 							$(document).ready(function(){
 							  
+
+
 							    // Setup form validation on the #register-form element
 							    $("#emailForm").validate({
+
 							    
 							        // Specify the validation rules
 							        rules: {
@@ -376,7 +379,7 @@
 								
                                 <ul class="actions">
 									<li style="padding-top:1em; margin-left:-0.5em">
-										<input type="submit" value="Send Message" id="send_email" onclick="ga('send', 'event', { eventCategory: 'SendMessageButton', eventAction: 'Click' })" />
+										<input type="submit" value="Send Message" id="send_email" onclick="ga('send', 'event', { eventCategory: 'CTA-Button', eventAction: 'Click-Button-SendEmail' })" />
 										<!-- <input onclick="clearForm();" type="submit" value="Send Message" id="send_email" /> includes clearform function -->
 									</li>
 								</ul>
@@ -756,7 +759,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			    var runned = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 250 && runned == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 600px', eventAction: 'ScrolledToGallery' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-600px', eventAction: 'ScrolledToGallery' }); 
 				  runned = true; 
 				  } 
 				});
@@ -764,7 +767,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				var runned2 = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 1425 && runned2 == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 1425px', eventAction: 'ScrolledToAbout' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-1425px', eventAction: 'ScrolledToAbout' }); 
 				  runned2 = true; 
 				  } 
 				});
@@ -772,7 +775,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				var runned2_1 = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 2082 && runned2_1 == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 2082px', eventAction: 'ScrolledToFeatured' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-2082px', eventAction: 'ScrolledToFeatured' }); 
 				  runned2_1 = true; 
 				  } 
 				});
@@ -780,7 +783,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				var runned3 = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 3037 && runned3 == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 3037px', eventAction: 'ScrolledToServices-Install' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-3037px', eventAction: 'ScrolledToServices-Install' }); 
 				  runned3 = true; 
 				  } 
 				});
@@ -788,7 +791,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				var runned4 = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 3490 && runned4 == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 3490px', eventAction: 'ScrolledToServices-SandFinish' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-3490px', eventAction: 'ScrolledToServices-SandFinish' }); 
 				  runned4 = true; 
 				  } 
 				});
@@ -796,7 +799,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				var runned5 = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 3852 && runned5 == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 3852px', eventAction: 'ScrolledToServices-Maint' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-3852px', eventAction: 'ScrolledToServices-Maint' }); 
 				  runned5 = true; 
 				  } 
 				});
@@ -804,7 +807,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				var runned6 = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 4328 && runned6 == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 4328px', eventAction: 'ScrolledToServices-Stain' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-4328px', eventAction: 'ScrolledToServices-Stain' }); 
 				  runned6 = true; 
 				  } 
 				});
@@ -812,7 +815,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				var runned7 = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 4617 && runned7 == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 4617px', eventAction: 'ScrolledToServices-Eco' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-4617px', eventAction: 'ScrolledToServices-Eco' }); 
 				  runned7 = true; 
 				  } 
 				});
@@ -820,7 +823,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				var runned8 = false; 
 				$( window ).scroll( function() { 
 				  if ( $( document ).scrollTop() >= 49710 && runned8 == false ) { 
-				    ga('send', 'event', { eventCategory: 'Scrolled 49710px', eventAction: 'ScrolledToAbout' }); 
+				    ga('send', 'event', { eventCategory: 'Scrolled-49710px', eventAction: 'ScrolledToAbout' }); 
 				  runned8 = true; 
 				  } 
 				});
