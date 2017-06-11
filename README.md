@@ -6,6 +6,13 @@ First thing first, I found a fantastic free responsive template from HTML5 UP wh
 
 There is one dynamic component to the site - the Contact Us form. I could have easily re-implemented PHPMailer used on the previous version of the site, but I wanted to learn something new. I first tackled this functionality by build a Java EE web application that used the JavaMail API to send the emails (see project afd_site-jsp), but this proved to heavy weight so I re-architected and moved to a Node/Express framework and implemented NodeMailer.
 
+I first deployed this application to a personally-configured EC2 instance running Ubuntu. I then moved the application to Elastic Beanstalk, deploying this express application using EB CLI.
+
+A simple web app like this can be hosted in multiple services in AWS. I first deployed the application to a personally-configured EC2 instance running Ubuntu. I then moved the application to Elastic Beanstalk, which automatically provides additional services such as resource provisioning, load balancing, auto-scaling, and monitoring. 
+
+Deploying an ExpressJS app to EB wasn't that simple though. It required that I install EB CLI, configure an EB CLI repository with my application folder (using 'eb init'), create an environment running a sample node application (using 'eb create'), and then add a config file (to /.ebextensions/nodecommand.config) that sets "npm start" as the default command to launch the node application, allowing my ExpressJS application to run.
+
+In the end, I didn't need the performance, scalability, availability, etc. of EC2 or EB. I launched this app to AWS Lightsail, which is only $5/month for a virtual private server. I provisioned an Ubuntu server, installed all necessary packages (git, node/npm), clone my application via Github, configured a static IP address, updated iptables so I routed tcp port 80 to port 3000 where my application runs, launched my app using "npm start" in a persistent 'screen' environment in Ubuntu, and then updated DNS records at Network Solutions (domain provider) so www.advancedfloor.net points to this server (52.5.30.70).
 
 Stuff I learned:
 - AWS EB CLI & the necessary commands to initialize a repository, create an EB environment, and deploy an app to EB
@@ -14,7 +21,7 @@ Stuff I learned:
 - How to deploy GitHub code to Elastic Beanstalk
 
 
-AWS: http://node-express-env.grfksc5d6y.us-west-2.elasticbeanstalk.com/
+AWS Lightsail: http://52.5.30.70/
 
 
 
