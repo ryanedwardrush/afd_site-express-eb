@@ -12,7 +12,7 @@ A simple web app like this can be hosted in multiple services in AWS. I first de
 
 Deploying an ExpressJS app to EB wasn't that simple though. It required that I install EB CLI, configure an EB CLI repository with my application folder (using 'eb init'), create an environment running a sample node application (using 'eb create'), and then add a config file (to /.ebextensions/nodecommand.config) that sets "npm start" as the default command to launch the node application, allowing my ExpressJS application to run.
 
-In the end, I didn't need the performance, scalability, availability, etc. of EC2 or EB. I launched this app to AWS Lightsail, which is only $5/month for a virtual private server. I provisioned an Ubuntu server, installed all necessary packages (git, node/npm), clone my application via Github, configured a static IP address, updated iptables so I routed tcp port 80 to port 3000 where my application runs, launched my app using "npm start" in a persistent 'screen' environment in Ubuntu, and then updated DNS records at Network Solutions (domain provider) so www.advancedfloor.net points to this server (52.5.30.70).
+In the end, I didn't need the performance, scalability, availability, etc. of EC2 or EB. I launched this app to AWS Lightsail, which is only $3.50/month for a virtual private server. I provisioned an Ubuntu server, installed all necessary packages (git, node/npm), clone my application via Github, configured a static IP address, updated iptables so I routed tcp port 80 to port 3000 where my application runs, launched my app using "screen npm start &" in a persistent 'screen' environment in Ubuntu, and then updated DNS records at Network Solutions (domain provider) so www.advancedfloor.net points to this server (52.5.30.70).
 
 Stuff I learned:
 - AWS EB CLI & the necessary commands to initialize a repository, create an EB environment, and deploy an app to EB
@@ -38,3 +38,11 @@ AWS Lightsail: http://52.5.30.70/
 - Deploying Express app to AWS EB: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express.html
 - env2 module for local environment variables: https://github.com/dwyl/learn-environment-variables
 - Setup Node/Express App on EC2, and configure iptables so port 80 points to port 9000: https://www.youtube.com/watch?v=WxhFq64FQzA
+
+******* Notes to self *******
+
+LINUX TERMINAL NOTES
+screen -ls = Lists all screens, with the first ~5 numbers being the screens ID
+screen -r [ID] = Restores that screen session
+Ctrl+a then Ctrl+d in that order will detach from a screen session
+
