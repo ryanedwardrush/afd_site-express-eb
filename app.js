@@ -1,9 +1,12 @@
 // Declare dependencies
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var nodemailer = require("nodemailer");
+const express = require('express');
+const http = require('http');
+const path = require('path');
+const nodemailer = require("nodemailer");
 
+// Dependencies for using SSL cert
+const https = require('https');
+const fs = require('fs');
 
 //Declare routes - Not using
 // var index = require('./routes/index');
@@ -16,7 +19,37 @@ const env = require('env2')('process.env');
 
 
 // Declare application to be an express application
-var app = express();
+const app = express();
+
+
+
+// This line is from the Node.js HTTPS documentation.
+var options = {
+  key: fs.readFileSync('../ssl/ip-172-26-11-115.key'),
+  cert: fs.readFileSync('../ssl/WWW.ADVANCEDFLOOR.NET.crt'),
+  ca: fs.readFileSync('../ssl/ca_bundle_certificate.crt'),
+};
+
+
+https.createServer(options, app).listen(8443);
+
+/*
+var https_options = {
+
+  key: fs.readFileSync("../private.key"),
+
+  cert: fs.readFileSync("../WWW.ADVANCEDFLOOR.NET.crt"),
+
+  ca: [
+
+          fs.readFileSync('../CA_root.crt'),
+
+          fs.readFileSync('../ca_bundle_certificate.crt')
+
+       ]
+};
+*/
+
 
 /* ****** View engine setup - Commenting out since I'm not using a view engine *****/
 // app.set('views', path.join(__dirname, 'views'));
@@ -100,6 +133,7 @@ app.get('/send', function(req, res){
 /* app.listen(3000,function(){
     console.log("Express Started on Port 3000");
 }); */
+
 
 
 module.exports = app;
