@@ -9,7 +9,7 @@ const env = require('env2')('process.env'); //Declare environment variable - Use
 // console.log(process.env.NODEMAILER_USER);
 // console.log(process.env.NODEMAILER_PASS);
 
-const hostname = 'advancedfloor.net';
+const hostname = '0.0.0.0';
 const httpPort = 8080;
 const httpsPort = 8443;
 
@@ -81,6 +81,10 @@ app.get('/send', function(req, res){
   });
 });
 
+http.get('*', function(req, res) {  
+    res.redirect('https://' + hostname + req.url);
+
+});
 
 httpServer.listen(httpPort, hostname);
 httpsServer.listen(httpsPort, hostname);
