@@ -10,8 +10,8 @@ const env = require('env2')('process.env'); //Declare environment variable - Use
 // console.log(process.env.NODEMAILER_PASS);
 
 const hostname = 'advancedfloor.net';
-const httpPort = 3000;
-const httpsPort = 443;
+const httpPort = 8080;
+const httpsPort = 8443;
 
 const key = fs.readFileSync('../ssl/ip-172-26-11-115.key');
 const ca = fs.readFileSync('../ssl/ca_bundle_certificate.crt');
@@ -81,6 +81,12 @@ app.get('/send', function(req, res){
   });
 
 });
+
+// set up a route to redirect http to https
+http.get('*', function(req, res) {  
+    res.redirect('https://' + req.headers.host + req.url);
+
+})
 
 httpServer.listen(httpPort, hostname);
 httpsServer.listen(httpsPort, hostname);
