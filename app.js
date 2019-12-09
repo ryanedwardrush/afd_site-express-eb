@@ -36,6 +36,12 @@ https.createServer(options, app)
 	]);
 */
 
+app.use((req, res, next) => {
+   if(req.protocol === 'http') {
+     res.redirect(301, `https://${req.headers.host}${req.url}`);
+   }
+   next();
+});
 
 
 app.use(express.static(path.join(__dirname, '/public')));  // Set static path, serves up the static index.html in the public folder
@@ -81,10 +87,6 @@ app.get('/send', function(req, res){
   });
 });
 
-http.get('*', function(req, res) {  
-    res.redirect('https://' + hostname + req.url);
-
-});
 
 httpServer.listen(httpPort, hostname);
 httpsServer.listen(httpsPort, hostname);
