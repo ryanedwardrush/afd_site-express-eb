@@ -79,13 +79,11 @@ app.get('/send', function(req, res){
       res.end("sent");
     }
   });
-
 });
 
 
 httpServer.listen(httpPort, hostname);
 httpsServer.listen(httpsPort, hostname);
-
 
 
 // Have server listen at a certain port ** NOT NECESSARY IN EXPRESS. IT"S HANDLED IN THE WWW FILE IN BIN **
