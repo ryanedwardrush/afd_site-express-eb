@@ -82,11 +82,6 @@ app.get('/send', function(req, res){
 
 });
 
-// set up a route to redirect http to https
-http.get('*', function(req, res) {  
-    res.redirect('https://' + req.headers.host + req.url);
-
-})
 
 httpServer.listen(httpPort, hostname);
 httpsServer.listen(httpsPort, hostname);
