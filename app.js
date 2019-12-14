@@ -36,18 +36,18 @@ https.createServer(options, app)
 	]);
 */
 
-const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
+// const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
  
 // Don't redirect if the hostname is `localhost:port` or the route is `/insecure`
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+// app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 
-// Method one for redirecting http to https, didn't work
-app.use((req, res, next) => {
-   if(req.protocol === 'http') {
-     res.redirect(301, `https://${req.headers.host}${req.url}`);
-   }
-   next();
-});
+// set up a route to redirect http to https
+httpServer.get('*', function(req, res) {  
+    res.redirect('https://' + req.headers.host + req.url);
+
+    // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
+    // res.redirect('https://example.com' + req.url);
+})
 
 
 app.get('/insecure', function (req, res) {
