@@ -36,6 +36,12 @@ https.createServer(options, app)
 	]);
 */
 
+const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
+ 
+// Don't redirect if the hostname is `localhost:port` or the route is `/insecure`
+app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+
+// Method one for redirecting http to https, didn't work
 app.use((req, res, next) => {
    if(req.protocol === 'http') {
      res.redirect(301, `https://${req.headers.host}${req.url}`);
@@ -43,6 +49,10 @@ app.use((req, res, next) => {
    next();
 });
 
+
+app.get('/insecure', function (req, res) {
+  res.send('Dangerous!');
+});
 
 app.use(express.static(path.join(__dirname, '/public')));  // Set static path, serves up the static index.html in the public folder
 
