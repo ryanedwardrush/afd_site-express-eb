@@ -25,24 +25,13 @@ const httpsOptions = {
 };
 
 const app = express();
-const httpServer = http.createServer(app);
+// const httpServer = http.createServer(app);
 const httpsServer = https.createServer(httpsOptions, app);
 
-
-/*
-https.createServer(options, app)
-	.listen(port, function () {
-		console.log(`Serving the ${directoryToServe}/ directory at https://localhost:${port}`)
-	]);
-*/
-
-// const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
- 
-// Don't redirect if the hostname is `localhost:port` or the route is `/insecure`
-// app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+var http = express.createServer();
 
 // set up a route to redirect http to https
-httpServer.get('*', function(req, res) {  
+http.get('*', function(req, res) {  
     res.redirect('https://' + req.headers.host + req.url);
 
     // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
@@ -97,8 +86,9 @@ app.get('/send', function(req, res){
   });
 });
 
+http.listen(httpPort);
 
-httpServer.listen(httpPort, hostname);
+// httpServer.listen(httpPort, hostname);
 httpsServer.listen(httpsPort, hostname);
 
 
