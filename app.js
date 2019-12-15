@@ -9,7 +9,7 @@ const env = require('env2')('process.env'); //Declare environment variable - Use
 // console.log(process.env.NODEMAILER_USER);
 // console.log(process.env.NODEMAILER_PASS);
 
-const hostname = '0.0.0.0';
+const hostname = '0.0.0.0'; // Is this really needed?
 const httpPort = 8080;
 const httpsPort = 8443;
 
@@ -24,31 +24,27 @@ const httpsOptions = {
   ca: ca,
 };
 
+// Initialize express
 const app = express();
 
 
-app.all('*', ensureSecure); // at top of routing calls
-
-
-function ensureSecure(req, res, next){
-  if(req.secure){
-    // OK, continue
-    return next();
-  };
-  // handle port numbers if you need non defaults
-  // res.redirect('https://' + req.host + req.url); // express 3.x
-  res.redirect('https://' + req.hostname + req.url); // express 4.x
-}
 
 //Decalre both http and https servers
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(httpsOptions, app);
+
+app.all('*', ensureSecure); // at top of routing calls
 
 // Serve the public folder path
 app.use(express.static(path.join(__dirname, '/public')));  // Set static path, serves up the static index.html in the public folder
 app.use("/public", express.static(__dirname + '/public'));  // Set static path, serves up the CSS, JS, etc.
 
 
+
+
+// redirect HTTP server
+// app.all('*', (req, res) => res.redirect(300, 'https://www.advancedfloor.net'));
+	
 
 /* ========== START OF MAIL APP ============ */
 
@@ -92,8 +88,26 @@ app.get('/send', function(req, res){
 /* ========== END OF MAIL APP ============ */
 
 
-httpServer.listen(httpPort, hostname);
-httpsServer.listen(httpsPort, hostname);
+httpServer.listen(httpPort, () => console.log(`HTTP server listening on port 8080`));
+httpsServer.listen(httpsPort, () => console.log(`HTTPS server listening on port 8443`));
+
+
+
+function ensureSecure(req, res, next){
+  if(req.secure){
+    // OK, continue
+    return next();
+  };
+  // handle port numbers if you need non defaults
+  // res.redirect('https://' + req.host + req.url); // express 3.x
+  res.redirect('https://' + req.hostname + req.url); // express 4.x
+}
+
+
+
+// The calls below provide hostname as an argument, not sure why
+// httpServer.listen(httpPort, hostname, () => console.log(`HTTP server listening on port 8080`));
+// httpsServer.listen(httpsPort, hostname, () => console.log(`HTTPS server listening on port 8443`));
 
 
 // Have server listen at a certain port ** NOT NECESSARY IN EXPRESS. IT"S HANDLED IN THE WWW FILE IN BIN **
