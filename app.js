@@ -25,19 +25,18 @@ const httpsOptions = {
 };
 
 const app = express();
+
+//Decalre both http and https servers
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(httpsOptions, app);
 
-const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
-
-// Don't redirect if the hostname is `localhost:port` or the route is `/insecure`
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
-
+// Serve the public folder path
 app.use(express.static(path.join(__dirname, '/public')));  // Set static path, serves up the static index.html in the public folder
-
 app.use("/public", express.static(__dirname + '/public'));  // Set static path, serves up the CSS, JS, etc.
 
 
+
+/* ========== START OF MAIL APP ============ */
 
 // Defining SMTP mail server details to use Network Solutions mail to send the email
 var smtpTransport = nodemailer.createTransport({
@@ -75,6 +74,8 @@ app.get('/send', function(req, res){
     }
   });
 });
+
+/* ========== END OF MAIL APP ============ */
 
 
 httpServer.listen(httpPort, hostname);
