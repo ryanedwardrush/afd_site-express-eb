@@ -25,7 +25,7 @@ const httpsOptions = {
   ca: ca,
 };
 
-// Initialize express
+// Initialize expresss
 const app = express();
 
 
