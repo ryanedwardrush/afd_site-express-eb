@@ -94,7 +94,7 @@ httpsServer.listen(httpsPort, () => console.log(`HTTPS server listening on port 
 function ensureSecure(req, res, next){
   if(req.secure){
     // OK, continue
-	console.log('Secure request');
+	// console.log('Secure request');
     return next();
   };
   // handle port numbers if you need non defaults
@@ -104,7 +104,7 @@ function ensureSecure(req, res, next){
 }
 
 
-
+// test
 // The calls below provide hostname as an argument, not sure why
 // httpServer.listen(httpPort, hostname, () => console.log(`HTTP server listening on port 8080`));
 // httpsServer.listen(httpsPort, hostname, () => console.log(`HTTPS server listening on port 8443`));
